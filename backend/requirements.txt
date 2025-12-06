@@ -19,7 +19,7 @@ hiredis>=2.3.2,<3.0.0
 
 # Google Cloud / Firebase (mantém Storage e Auth)
 firebase-admin>=6.5.0,<7.0.0
-google-cloud-storage>=2.16.0,<3.0.0
+google-cloud-storage>=2.16.0,<4.0.0
 google-cloud-vision>=3.7.0,<4.0.0
 
 # Security
