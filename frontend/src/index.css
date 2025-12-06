@@ -1,0 +1,722 @@
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== BASE STYLES ===== */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'salt';
+    font-variation-settings: 'opsz' 32;
+    letter-spacing: -0.011em;
+  }
+
+  /* Custom scrollbar - minimalista */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300/60 rounded-full transition-colors;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400/80;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-primary-100/80 text-primary-900;
+  }
+
+  /* Focus visible - ultra sutil */
+  :focus-visible {
+    @apply outline-none ring-1 ring-primary-400/30 ring-offset-2 ring-offset-white;
+  }
+}
+
+/* ===== COMPONENT STYLES ===== */
+@layer components {
+  /* === BUTTONS === */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 
+           rounded-lg font-medium text-sm tracking-tight
+           transition-all duration-200 ease-in-out
+           focus:outline-none focus-visible:ring-1 focus-visible:ring-offset-2
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white 
+           shadow-sm shadow-primary-600/10
+           hover:bg-primary-700 hover:shadow hover:shadow-primary-600/20 hover:-translate-y-px
+           active:translate-y-0 active:shadow-sm focus-visible:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-slate-700 border border-slate-200/80
+           shadow-sm
+           hover:bg-slate-50 hover:border-slate-300/80 hover:text-slate-900
+           focus-visible:ring-slate-400;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-slate-600
+           hover:bg-slate-100/80 hover:text-slate-900
+           focus-visible:ring-slate-400;
+  }
+
+  .btn-danger {
+    @apply bg-danger-600 text-white
+           shadow-sm
+           hover:bg-danger-700
+           focus-visible:ring-danger-500;
+  }
+
+  .btn-success {
+    @apply bg-success-600 text-white
+           shadow-sm
+           hover:bg-success-700
+           focus-visible:ring-success-500;
+  }
+
+  .btn-icon {
+    @apply p-2.5 aspect-square;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs rounded-lg;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base rounded-2xl;
+  }
+
+  /* === INPUTS === */
+  .input {
+    @apply w-full px-4 py-2.5 
+           bg-white border border-slate-200/80 rounded-lg
+           text-slate-900 placeholder:text-slate-400
+           transition-all duration-200
+           hover:border-slate-300/80
+           focus:outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-200/50;
+  }
+
+  .input-error {
+    @apply border-danger-300 focus:border-danger-500 focus:ring-danger-200;
+  }
+
+  .input-group {
+    @apply relative;
+  }
+
+  .input-group .input {
+    @apply pl-11;
+  }
+
+  .input-group-icon {
+    @apply absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none;
+  }
+
+  /* === SELECT === */
+  .select {
+    @apply input appearance-none bg-no-repeat cursor-pointer pr-10;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+  }
+
+  /* === CARDS === */
+  .card {
+    @apply bg-white rounded-lg border border-slate-200/60
+           shadow-sm
+           transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:shadow-md hover:border-slate-300/60 hover:-translate-y-0.5;
+  }
+
+  .card-interactive {
+    @apply card card-hover cursor-pointer;
+  }
+
+  .card-header {
+    @apply px-6 py-5 border-b border-slate-200/60;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .card-footer {
+    @apply px-6 py-4 border-t border-slate-200/60 bg-slate-50/50 rounded-b-lg;
+  }
+
+  /* === BADGES === */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 
+           rounded-full text-xs font-semibold tracking-tight
+           transition-colors duration-150;
+  }
+
+  .badge-primary {
+    @apply bg-primary-50/80 text-primary-700 ring-1 ring-inset ring-primary-200/40;
+  }
+
+  .badge-success {
+    @apply bg-success-50/80 text-success-700 ring-1 ring-inset ring-success-200/40;
+  }
+
+  .badge-warning {
+    @apply bg-warning-50/80 text-warning-700 ring-1 ring-inset ring-warning-200/40;
+  }
+
+  .badge-danger {
+    @apply bg-danger-50/80 text-danger-700 ring-1 ring-inset ring-danger-200/40;
+  }
+
+  .badge-info {
+    @apply bg-info-50/80 text-info-700 ring-1 ring-inset ring-info-200/40;
+  }
+
+  .badge-neutral {
+    @apply bg-slate-100/80 text-slate-700 ring-1 ring-inset ring-slate-200/60;
+  }
+
+  /* === AVATARS === */
+  .avatar {
+    @apply relative inline-flex items-center justify-center
+           rounded-full bg-gradient-to-br from-primary-600 to-primary-800
+           text-white font-semibold
+           ring-2 ring-white shadow-sm;
+  }
+
+  .avatar-sm {
+    @apply w-8 h-8 text-xs;
+  }
+
+  .avatar-md {
+    @apply w-10 h-10 text-sm;
+  }
+
+  .avatar-lg {
+    @apply w-12 h-12 text-base;
+  }
+
+  .avatar-xl {
+    @apply w-16 h-16 text-lg;
+  }
+
+  /* === TOOLTIPS === */
+  .tooltip {
+    @apply absolute z-50 px-3 py-1.5 
+           bg-slate-800 text-slate-100 text-xs font-medium
+           rounded-lg shadow-lg
+           opacity-0 invisible
+           transition-all duration-200
+           pointer-events-none;
+  }
+
+  .tooltip-trigger:hover .tooltip {
+    @apply opacity-100 visible;
+  }
+
+  /* === DIVIDERS === */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent;
+  }
+
+  /* === STAT CARDS === */
+  .stat-card {
+    @apply card p-6;
+  }
+
+  .stat-card-value {
+    @apply text-3xl font-bold text-slate-900 tracking-tighter;
+  }
+
+  .stat-card-label {
+    @apply text-sm font-medium text-slate-600 mt-1;
+  }
+
+  .stat-card-icon {
+    @apply p-3 rounded-xl;
+  }
+
+  /* === TABLE === */
+  .table-container {
+    @apply overflow-hidden rounded-lg border border-slate-200/60 bg-white;
+  }
+
+  .table {
+    @apply w-full text-sm;
+  }
+
+  .table thead {
+    @apply bg-slate-50/50 border-b border-slate-200/60;
+  }
+
+  .table th {
+    @apply px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wide;
+  }
+
+  .table td {
+    @apply px-6 py-4 text-slate-800;
+  }
+
+  .table tbody tr {
+    @apply border-b border-slate-100/60 last:border-0
+           transition-colors duration-200
+           hover:bg-slate-50/50;
+  }
+
+  /* === MODALS === */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 
+           bg-slate-900/50 backdrop-blur-sm
+           animate-fade-in;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-lg shadow-soft-lg
+           animate-scale-in;
+  }
+
+  .modal-header {
+    @apply flex items-center justify-between px-6 py-4 border-b border-slate-200;
+  }
+
+  .modal-body {
+    @apply p-6;
+  }
+
+  .modal-footer {
+    @apply flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-200 bg-slate-50 rounded-b-lg;
+  }
+
+  /* === SIDEBAR === */
+  .sidebar {
+    @apply fixed left-0 top-0 bottom-0 w-64
+           bg-slate-900 border-r border-slate-800
+           flex flex-col
+           transition-transform duration-300 ease-smooth
+           z-40;
+  }
+
+  .sidebar-nav-item {
+    @apply flex items-center gap-3 px-4 py-3 mx-3 rounded-xl
+           text-slate-400 font-medium text-sm
+           transition-all duration-200
+           hover:bg-slate-800 hover:text-slate-200;
+  }
+
+  .sidebar-nav-item.active {
+    @apply bg-primary-700/50 text-white
+           shadow-sm;
+  }
+
+  .sidebar-nav-item.active .sidebar-nav-icon {
+    @apply text-primary-300;
+  }
+
+  /* === DROPDOWN === */
+  .dropdown {
+    @apply absolute z-50 mt-2 
+           bg-white rounded-lg border border-slate-200/60 
+           shadow-lg shadow-slate-200/50
+           py-2 min-w-[200px]
+           animate-fade-in-down;
+  }
+
+  .dropdown-item {
+    @apply flex items-center gap-3 px-4 py-2.5
+           text-sm text-slate-700
+           transition-colors duration-200
+           hover:bg-slate-50/80 hover:text-slate-900
+           cursor-pointer;
+  }
+
+  .dropdown-divider {
+    @apply my-2 h-px bg-slate-200;
+  }
+
+  /* === TABS === */
+  .tabs {
+    @apply flex gap-1 p-1 bg-slate-100/80 rounded-lg;
+  }
+
+  .tab {
+    @apply flex-1 px-4 py-2.5 
+           text-sm font-medium text-slate-600
+           rounded-md
+           transition-all duration-200
+           hover:text-slate-900;
+  }
+
+  .tab.active {
+    @apply bg-white text-slate-900 shadow-sm;
+  }
+
+  /* === PROGRESS === */
+  .progress {
+    @apply h-2 bg-slate-200 rounded-full overflow-hidden;
+  }
+
+  .progress-bar {
+    @apply h-full bg-primary-600
+           rounded-full transition-all duration-500 ease-smooth;
+  }
+
+  /* === SKELETON LOADING === */
+  .skeleton {
+    @apply bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200
+           bg-[length:200%_100%]
+           animate-shimmer
+           rounded-lg;
+  }
+
+  /* === EMPTY STATE === */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 px-8 text-center;
+  }
+
+  .empty-state-icon {
+    @apply w-16 h-16 mb-4 text-slate-300;
+  }
+
+  .empty-state-title {
+    @apply text-lg font-semibold text-slate-700 mb-2;
+  }
+
+  .empty-state-description {
+    @apply text-sm text-slate-500 max-w-sm;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+@layer utilities {
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400;
+  }
+
+  .text-gradient-success {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-success-600 to-success-400;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    @apply bg-gradient-to-br from-primary-500 to-primary-700;
+  }
+
+  .bg-gradient-dark {
+    @apply bg-gradient-to-br from-slate-800 to-slate-900;
+  }
+
+  /* Dot pattern */
+  .dot-pattern {
+    background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Line clamp */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Hide scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Aspect ratio containers */
+  .aspect-card {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-smooth;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+
+  /* No select */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* ===== RECHARTS CUSTOMIZATION ===== */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #e2e8f0;
+  stroke-dasharray: 3 3;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+.recharts-default-tooltip {
+  @apply bg-white rounded-xl shadow-soft-lg border border-slate-100 !important;
+  padding: 12px 16px !important;
+}
+
+.recharts-tooltip-label {
+  @apply text-sm font-semibold text-slate-700 mb-2 !important;
+}
+
+.recharts-tooltip-item {
+  @apply text-sm text-slate-600 !important;
+}
+
+/* ===== MOBILE & RESPONSIVE UTILITIES ===== */
+@layer utilities {
+  /* Safe Area for iOS devices */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* Touch optimization */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Prevent iOS zoom on input focus */
+  @supports (-webkit-touch-callout: none) {
+    .input, .select, textarea {
+      font-size: 16px;
+    }
+  }
+
+  /* Mobile tap highlight */
+  .tap-highlight-none {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Smooth scroll container */
+  .scroll-smooth {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Mobile card optimization */
+  @media (max-width: 640px) {
+    .card {
+      @apply rounded-xl border-0 shadow-sm;
+    }
+
+    .card-body {
+      @apply p-3;
+    }
+
+    .card-header {
+      @apply px-3 py-2.5;
+    }
+
+    .card-footer {
+      @apply px-3 py-2.5;
+    }
+
+    .btn {
+      @apply py-2.5 px-3 text-sm;
+    }
+    
+    .btn-sm {
+      @apply py-2 px-2.5 text-xs;
+    }
+    
+    .btn-lg {
+      @apply py-3 px-4 text-base;
+    }
+
+    .btn-icon {
+      @apply p-2;
+    }
+
+    .input {
+      @apply py-2.5 px-3 text-sm;
+    }
+    
+    .select {
+      @apply py-2.5 px-3 text-sm;
+    }
+
+    .stat-card {
+      @apply p-3;
+    }
+
+    .stat-card-value {
+      @apply text-xl;
+    }
+    
+    .badge {
+      @apply px-2 py-0.5 text-[10px];
+    }
+
+    /* Tables responsivas */
+    .table-responsive {
+      @apply -mx-3 overflow-x-auto;
+    }
+    
+    .table-responsive table {
+      @apply text-sm;
+    }
+    
+    .table-responsive th,
+    .table-responsive td {
+      @apply px-2 py-2 whitespace-nowrap;
+    }
+
+    /* Page headers */
+    .page-header {
+      @apply flex-col items-start gap-3;
+    }
+    
+    .page-header h1 {
+      @apply text-xl;
+    }
+
+    /* Modal responsivo */
+    .modal-content {
+      @apply mx-2 max-h-[85vh];
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .card-body {
+      @apply p-4;
+    }
+
+    .btn {
+      @apply py-2.5;
+    }
+  }
+
+  /* Responsive text - Sistema de tipografia mobile uniforme */
+  .text-responsive-xs {
+    @apply text-[10px] sm:text-xs;
+  }
+
+  .text-responsive-sm {
+    @apply text-[11px] sm:text-sm;
+  }
+
+  .text-responsive {
+    @apply text-xs sm:text-sm md:text-base;
+  }
+
+  .text-responsive-lg {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  .text-responsive-xl {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  }
+
+  /* Mobile typography base - Fonte Inter com tamanhos otimizados */
+  @media (max-width: 640px) {
+    /* Títulos */
+    h1 { @apply text-lg leading-tight; }
+    h2 { @apply text-base leading-tight; }
+    h3 { @apply text-sm leading-snug; }
+    
+    /* Labels e textos pequenos */
+    label { @apply text-xs; }
+    
+    /* Descrições */
+    .description { @apply text-[11px] leading-snug; }
+  }
+
+  /* Mobile menu transition */
+  .mobile-menu-enter {
+    transform: translateX(-100%);
+  }
+
+  .mobile-menu-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms ease-out;
+  }
+
+  .mobile-menu-exit {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-exit-active {
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+}

@@ -1,0 +1,33 @@
+# Web Framework
+fastapi>=0.109.0,<1.0.0
+uvicorn[standard]>=0.27.0,<1.0.0
+pydantic>=2.5.0,<3.0.0
+pydantic-settings>=2.1.0,<3.0.0
+
+# Utilities
+python-dotenv>=1.0.0,<2.0.0
+python-multipart>=0.0.6,<1.0.0
+
+# Database - Async PostgreSQL
+sqlalchemy>=2.0.0,<3.0.0
+asyncpg>=0.29.0,<1.0.0
+alembic>=1.13.0,<2.0.0
+
+# Cache - Redis
+redis>=5.0.1,<6.0.0
+hiredis>=2.3.2,<3.0.0
+
+# Google Cloud / Firebase (mantém Storage e Auth)
+firebase-admin>=6.5.0,<7.0.0
+google-cloud-storage>=2.16.0,<3.0.0
+google-cloud-vision>=3.7.0,<4.0.0
+
+# Security
+python-jose[cryptography]>=3.3.0,<4.0.0
+passlib[bcrypt]>=1.7.4,<2.0.0
+
+# Validation
+email-validator>=2.1.0,<3.0.0
+
+# Monitoring & Logging
+sentry-sdk[fastapi]>=1.40.0,<2.0.0

@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+coverage
+.env
+.env.local
+*.log
+.DS_Store
+backend/__pycache__
+backend/.pytest_cache
+backend/alembic/versions/*.py
+*.pyc
+.venv
+venv
